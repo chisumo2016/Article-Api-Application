@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Article Resource   (Model Binding
+Route::get('articles',              'Api/ArticleController@index');
+Route::get('articles/{article}',     'Api/ArticleController@show');
+Route::post('articles',              'Api/ArticleController@store');
+Route::put('articles/{article}',     'Api/ArticleController@update');
+Route::delete('articles/{article}',  'Api/ArticleController@delete');
