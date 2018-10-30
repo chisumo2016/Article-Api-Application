@@ -23,3 +23,7 @@ Route::get('articles/{article}',     'Api\ArticleController@show');
 Route::post('articles',              'Api\ArticleController@store');
 Route::put('articles/{article}',     'Api\ArticleController@update');
 Route::delete('articles/{article}',  'Api\ArticleController@delete');
+
+
+Route::post('register', 'Auth\RegisterController@register');
+Route::post('login', 'Auth\LoginController@register');
