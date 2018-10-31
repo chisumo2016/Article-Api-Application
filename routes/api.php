@@ -18,12 +18,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Article Resource   (Model Binding
-Route::get('articles',               'Api\ArticleController@index');
-Route::get('articles/{article}',     'Api\ArticleController@show');
-Route::post('articles',              'Api\ArticleController@store');
-Route::put('articles/{article}',     'Api\ArticleController@update');
-Route::delete('articles/{article}',  'Api\ArticleController@delete');
+
+Route::group(['middleware' => 'auth:api'], function () {
+
+    Route::get('articles',               'Api\ArticleController@index');
+    Route::get('articles/{article}',     'Api\ArticleController@show');
+    Route::post('articles',              'Api\ArticleController@store');
+    Route::put('articles/{article}',     'Api\ArticleController@update');
+    Route::delete('articles/{article}',  'Api\ArticleController@delete');
+});
+
 
 
 Route::post('register', 'Auth\RegisterController@register');
 Route::post('login', 'Auth\LoginController@login');
+Route::post('logout','Auth\LoginController@logout');
